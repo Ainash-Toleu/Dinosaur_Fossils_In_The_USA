@@ -1,0 +1,112 @@
+/*----------*/
+body {
+    height: 100%;
+    width: 100%;
+    background-color: #EDEDED;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/*----------*/
+.navigation {
+    color: white;
+    font-family: sans-serif;
+    background-color: #4aaaa5;
+    font-weight: bold;
+    padding: inherit;
+}
+.navigation .navbar-brand {
+    color: white;
+    font-family: Verdana;
+    font-size: 30px;
+    background-color: #4aaaa5;
+    font-weight: bold;
+    margin-left: 30px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.navbar {
+    max-height: 70px;
+    background-color: white;
+    font-size: 16px;
+}
+.dropdown-item{
+    color: #6D8092; 
+}
+
+.dropdown .dropdown-menu .dropdown-item:active, .dropdown .dropdown-menu .dropdown-item:hover{
+    background-color:#E5E5E5;
+	color:#4aaaa5;
+}
+.navigation .nav-link:hover{
+    background-color:#E5E5E5;
+	color:#4aaaa5;
+	border-radius:5px;
+   }
+.navigation .navbar-brand:hover{
+    color: #b7eceb;
+}
+
+/*----------*/
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/*----------*/
+.title {
+    color: #4aaaa5;  
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bolder; 
+    padding-top: 20px; 
+}
+p {
+    color: #6D8092;
+    font-family: Arial, Helvetica, sans-serif;
+}
+/*----------*/
+img {
+    width: 100%;
+}
+.intro-image{
+    width: calc(100%/3);
+}
+.image-thumbnail:hover{
+	border-color: #4aaaa5;
+    border-style: solid;
+}
+.image-active {
+    border-color:#4aaaa5;
+    border-style: solid; 
+}
+/*----------*/
+.box {
+    margin-top: 50px;
+    margin-bottom: 40px;
+    padding: 10px 20px 15px;
+    color: black;
+    background-color: white;
+}
+/*----------*/
+.table-responsive {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*----------*/
+@media(max-width: 992px){
+.navbar-brand {
+    color: white;
+    font-size: 30px;
+    background-color: #4aaaa5;
+    padding: 10px;
+}
+.navbar{
+    max-height: none; 
+    padding: inherit;
+}
+.container{
+    background-color: white;
+}
+}
