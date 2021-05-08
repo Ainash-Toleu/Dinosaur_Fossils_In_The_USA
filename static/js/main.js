@@ -96,3 +96,35 @@ function setHighCharts(responseData){
 	});
 
 }
+
+// Query the endpoint that returns a JSON ...
+d3.json("/plotly").then(function (data) {
+
+    // ... and dump that JSON to the console for inspection
+    console.log(data); 
+
+    // Next, pull out the keys and the values for graphing
+    keys = Object.keys(data);
+    values = Object.values(data);
+
+    // Create the trace
+    var trace = {
+        x: values,
+        y: keys,
+        type: "bar",
+		orientation: 'h'
+    };
+
+    // Put the trace into an array 
+    var data = [trace];
+
+    // Define a layout object
+    var layout = {
+        title: "Distribution of Dinosaur Fossil Specimens by Bone Type",
+        xaxis: { title: "Count"},
+        yaxis: { title: "Bone type"}
+    };
+
+    // Create the plot
+    Plotly.newPlot("plotly", data, layout); 
+});

@@ -24,7 +24,6 @@ base.prepare(engine, reflect=True)
 table = base.classes.dinosaur_fossils
 
 # Instantiate the Flask application. 
-# This statement is required for Flask to do its job. 
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0 # Effectively disables page caching
 
@@ -99,7 +98,25 @@ def QueryDendogramLO():
     # Return the jsonified result. 
     return jsonify(levelf)
 
-# This statement is required for Flask to do its job. 
-# Think of it as chocolate cake recipe. 
+@app.route("/plotly")
+def DictionaryRoute():
+
+    dict = { "Femur": 57,
+             "Tibia": 52,
+             "Humerus": 48,
+             "Ulna": 32,
+             "Scapula": 29,
+             "Radius": 27,
+             "Fibula": 26,
+             "Coracoid": 18,
+             "Skull": 17,
+             "Scapulacoracoid": 5,
+             "Ilium": 3,
+             "Ischium": 3,
+             "Metatarsus": 1,
+             "Pubis": 1}
+    
+    return jsonify(dict)
+
 if __name__ == '__main__':
     app.run(debug=True)
