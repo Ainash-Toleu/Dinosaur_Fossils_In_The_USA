@@ -39,9 +39,9 @@ function setHighCharts(responseData){
 	        ) {
 	            e.options.data.forEach(function (link) {
 
-	                if (link[0] === 'Saurischia') {
-	                    nodes['Saurischia'] = {
-	                        id: 'Saurischia',
+	                if (link[0] === 'Chordata') {
+	                    nodes['Chordata'] = {
+	                        id: 'Chordata',
 	                        marker: {
 	                            radius: 20
 	                        }

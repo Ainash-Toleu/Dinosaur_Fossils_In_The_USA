@@ -75,21 +75,25 @@ def QueryDendogramLO():
 
     # Open a session, run the query, and then close the session again
     session = Session(engine)
-    resulta = session.query(table.specimen_class, table.specimen_order).distinct()
-    resultb = session.query(table.specimen_order, table.specimen_family).distinct()
+    resulta = session.query(table.specimen_phylum, table.specimen_class).distinct()
+    resultb = session.query(table.specimen_class, table.specimen_family).distinct()
     resultc = session.query(table.specimen_family, table.specimen_genus).distinct()
+    resultd = session.query(table.specimen_genus, table.specimen_name).distinct()
     session.close()
 
     # Create a list of dictionaries, with each dictionary containing one row from the query. 
     levelf = []
-    for specimen_class, specimen_order in resulta:
-        list = [specimen_class, specimen_order]
+    for specimen_phylum, specimen_class in resulta:
+        list = [specimen_phylum, specimen_class]
         levelf.append(list)
-    for specimen_order, specimen_family in resultb:
-        list = [specimen_order, specimen_family]
+    for specimen_class, specimen_family in resultb:
+        list = [specimen_class, specimen_family]
         levelf.append(list)
     for specimen_family, specimen_genus in resultc:
         list = [specimen_family, specimen_genus]
+        levelf.append(list)
+    for specimen_genus, specimen_name in resultd:
+        list = [specimen_genus, specimen_name]
         levelf.append(list)
 
     # Return the jsonified result. 
