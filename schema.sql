@@ -8,7 +8,6 @@ create table dinosaur_fossils  (
 	specimen_name text,
 	specimen_phylum text,
 	specimen_class text,
-	specimen_order text,
 	specimen_family text,
 	specimen_genus text,
 	lng int,
