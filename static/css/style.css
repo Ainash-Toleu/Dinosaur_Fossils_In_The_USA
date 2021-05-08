@@ -73,6 +73,11 @@ body {
     letter-spacing: -.05rem;
   }
   
+  #mapid {
+		height: 400px;
+		width: 600px;
+	}
+  
   
   /* RESPONSIVE CSS
   -------------------------------------------------- */

@@ -42,18 +42,18 @@ def QueryDinosaurDatabase():
 
     # Open a session, run the query, and then close the session again
     session = Session(engine)
-    results = session.query(table.specimen_no, table.specimen_id, table.specimen_part, table.specimen_name, table.specimen_class, table.specimen_order, table.specimen_family, table.specimen_genus, table.lng, table.lat, table.country, table.state).all()
+    results = session.query(table.specimen_no, table.specimen_id, table.specimen_part, table.specimen_name, table.specimen_class, table.specimen_family, table.specimen_genus, table.lng, table.lat, table.country, table.state).all()
     session.close()
 
     # Create a list of dictionaries, with each dictionary containing one row from the query. 
     all_dinosaurs = []
-    for specimen_no, specimen_id, specimen_part, specimen_name, specimen_class, specimen_order, specimen_family, specimen_genus, lng, lat, country, state in results:
+    for specimen_no, specimen_id, specimen_part, specimen_name, specimen_class, specimen_family, specimen_genus, lng, lat, country, state in results:
         dict = {}
         dict["specimen_no"] = specimen_no
         dict["specimen_id"] = specimen_id
         dict["specimen_name"] = specimen_name
         dict["specimen_class"] = specimen_class
-        dict["specimen_order"] = specimen_order
+        #dict["specimen_order"] = specimen_order
         dict["specimen_family"] = specimen_family
         dict["specimen_genus"] = specimen_genus
         dict["lng"] = lng
@@ -117,6 +117,28 @@ def DictionaryRoute():
              "Pubis": 1}
     
     return jsonify(dict)
+	
+@app.route("/leafmap")
+def SelectForMap():
+
+    # Open a session, run the query, and then close the session again
+    session = Session(engine)
+    results = session.query(table.specimen_no, table.specimen_id, table.specimen_name, table.lng, table.lat).all()
+    session.close()
+
+    # Create a list of dictionaries, with each dictionary containing one row from the query. 
+    all_bones = []
+    for specimen_no, specimen_id, specimen_name, lng, lat, in results:
+        dict = {}
+        dict["specimen_no"] = specimen_no
+        dict["specimen_id"] = specimen_id
+        dict["specimen_name"] = specimen_name
+        dict["lng"] = lng
+        dict["lat"] = lat
+		
+        all_bones.append(dict)
+		
+    return jsonify(all_bones);
 
 if __name__ == '__main__':
     app.run(debug=True)
