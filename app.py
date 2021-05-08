@@ -69,6 +69,32 @@ def QueryDinosaurDatabase():
     # Return the jsonified result. 
     return jsonify(all_dinosaurs)
 
+@app.route("/dendogram")
+def QueryDendogramLO():
+    ''' Query the dinosaur database and return the results as a JSON. '''
+
+    # Open a session, run the query, and then close the session again
+    session = Session(engine)
+    resulta = session.query(table.specimen_class, table.specimen_order).distinct()
+    resultb = session.query(table.specimen_order, table.specimen_family).distinct()
+    resultc = session.query(table.specimen_family, table.specimen_genus).distinct()
+    session.close()
+
+    # Create a list of dictionaries, with each dictionary containing one row from the query. 
+    levelf = []
+    for specimen_class, specimen_order in resulta:
+        list = [specimen_class, specimen_order]
+        levelf.append(list)
+    for specimen_order, specimen_family in resultb:
+        list = [specimen_order, specimen_family]
+        levelf.append(list)
+    for specimen_family, specimen_genus in resultc:
+        list = [specimen_family, specimen_genus]
+        levelf.append(list)
+
+    # Return the jsonified result. 
+    return jsonify(levelf)
+
 # This statement is required for Flask to do its job. 
 # Think of it as chocolate cake recipe. 
 if __name__ == '__main__':

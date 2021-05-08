@@ -132,27 +132,19 @@
 
 
 		<div class="row">
-			<div class="col-lg-7 col-md-12">
-				<div class="box" id="leafmap">
-					<h3 class="title">LEAF MAP</h3>
-					<hr>
-					<img alt="FOSSIL LOCATIONS" src="static/images/fig1.png" class="float-left">
-				</div>
-				
-			</div>
-			<div class="col-lg-5 col-md-12">
+			<div class="col-lg-12 col-md-12">
 				<div class="box">
 					<div class="container">
 						<div class="row" style="padding-bottom: 30px;">
 							<div class="card-body">
 								<ul class="nav nav-tabs">
 									<li class="nav-item">
-										<a href="#home" data-toggle="tab" aria-expanded="false" class="nav-link active">
+										<a href="#home" data-toggle="tab" aria-expanded="false" class="nav-link">
 										   <i class="fal fa-info-square"></i><span class="d-none d-sm-inline-block ml-2">DETAILS</span>
 										</a>
 									</li>
 									<li class="nav-item">
-										<a href="#profile" data-toggle="tab" aria-expanded="true" class="nav-link">
+										<a href="#profile" data-toggle="tab" aria-expanded="true" class="nav-link active">
 											<i class="fal fa-chart-pie"></i> <span class="d-none d-sm-inline-block ml-2">PIE CHART</span>
 										</a>
 									</li>
@@ -163,21 +155,21 @@
 									</li>
 								</ul>
 								<div class="tab-content">
-									<div class="tab-pane active" id="home">
-										<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
-										<p class="mb-0">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
-									</div>
+									<div class="tab-pane" id="home">
+                    <div class="box" id="leafmap">
+                      <h3 class="title">LEAF MAP</h3>
+                      <hr>
+                      <img alt="FOSSIL LOCATIONS" src="static/images/fig1.png" class="float-left">
+                    </div>
+                              </div>
 									<div class="tab-pane show" id="profile">
-										<p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
-										<p class="mb-0">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
-									</div>
+                    <figure class="highcharts-figure" style="width:100%">
+                      <div id="container" style="width:100%"></div>
+                  </figure>
+                                    </div>
 									<div class="tab-pane" id="messages">
 										<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
 										<p class="mb-0">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
-									</div>
-									<div class="tab-pane" id="settings">
-										<p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
-										<p class="mb-0">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
 									</div>
 								</div>
 							</div>
@@ -229,7 +221,10 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/networkgraph.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
   <script type="text/javascript" src="static/js/main.js"></script>  
-
+  
 </body>
 </html>
