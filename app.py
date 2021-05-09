@@ -8,6 +8,7 @@ import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
+from sqlalchemy import func
 
 # import info from config document
 from config import user, password, host, port
@@ -42,26 +43,25 @@ def QueryDinosaurDatabase():
 
     # Open a session, run the query, and then close the session again
     session = Session(engine)
-    results = session.query(table.specimen_no, table.specimen_id, table.specimen_part, table.specimen_name, table.specimen_class, table.specimen_order, table.specimen_family, table.specimen_genus, table.lng, table.lat, table.country, table.state).all()
+    results = session.query(table.specimen_no, table.specimen_id, table.specimen_part, table.specimen_name, table.specimen_class, table.specimen_family, table.specimen_genus, table.lng, table.lat, table.country, table.state).all()
     session.close()
 
     # Create a list of dictionaries, with each dictionary containing one row from the query. 
     all_dinosaurs = []
-    for specimen_no, specimen_id, specimen_part, specimen_name, specimen_class, specimen_order, specimen_family, specimen_genus, lng, lat, country, state in results:
+    for specimen_no, specimen_id, specimen_part, specimen_name, specimen_phylum, specimen_class, specimen_family, specimen_genus, lng, lat, country, state in results:
         dict = {}
         dict["specimen_no"] = specimen_no
         dict["specimen_id"] = specimen_id
+        dict["specimen_part"] = specimen_part
         dict["specimen_name"] = specimen_name
+        dict["specimen_phylum"] = specimen_phylum
         dict["specimen_class"] = specimen_class
-        dict["specimen_order"] = specimen_order
         dict["specimen_family"] = specimen_family
         dict["specimen_genus"] = specimen_genus
         dict["lng"] = lng
         dict["lat"] = lat
         dict["country"] = country
         dict["state"] = state
-
-
 
         all_dinosaurs.append(dict)
 
@@ -98,25 +98,28 @@ def QueryDendogramLO():
     # Return the jsonified result. 
     return jsonify(levelf)
 
-@app.route("/plotly")
-def DictionaryRoute():
 
-    dict = { "Femur": 57,
-             "Tibia": 52,
-             "Humerus": 48,
-             "Ulna": 32,
-             "Scapula": 29,
-             "Radius": 27,
-             "Fibula": 26,
-             "Coracoid": 18,
-             "Skull": 17,
-             "Scapulacoracoid": 5,
-             "Ilium": 3,
-             "Ischium": 3,
-             "Metatarsus": 1,
-             "Pubis": 1}
+@app.route("/plotly")
+def QueryBones():
+    ''' Query the dinosaur database and return the results as a JSON. '''
+    # Open a session, run the query, and then close the session again
+    session = Session(engine)
+    resulte = session.query(table.specimen_part, func.count(table.specimen_part)).group_by(table.specimen_part).all()
+    session.close()
+    # Create a list of dictionaries, with each dictionary containing one row from the query. 
+    all_bones = []
+    for specimen_part, value in resulte:
+        dict = {}
+        dict["specimen_part"] = specimen_part
+        dict["value"] = value
+        all_bones.append(dict)
+    newdict = {subdict["specimen_part"]: subdict["value"] for subdict in all_bones}
+    # Return the jsonified result. 
+    return jsonify(newdict)
+   
+
     
-    return jsonify(dict)
+    
 
 if __name__ == '__main__':
     app.run(debug=True)
