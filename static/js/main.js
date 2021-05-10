@@ -101,18 +101,29 @@ function setHighCharts(responseData){
 d3.json("/plotly").then(function (data) {
 
     // ... and dump that JSON to the console for inspection
-    console.log(data); 
+    console.log(data);
 
     // Next, pull out the keys and the values for graphing
     keys = Object.keys(data);
     values = Object.values(data);
-
+	
     // Create the trace
     var trace = {
         x: values,
         y: keys,
         type: "bar",
-		orientation: 'h'
+		orientation: 'h',
+		text: values.map(String),
+  		textposition: 'outside',
+  		hoverinfo: 'text',
+  		marker: {
+    		color: 'rgb(158,202,225)',
+    		opacity: 0.6,
+    		line: {
+      			color: 'rgb(8,48,107)',
+      			width: 1.5
+    		}
+  		}
     };
 
     // Put the trace into an array 
@@ -122,8 +133,13 @@ d3.json("/plotly").then(function (data) {
     var layout = {
         title: "Distribution of Dinosaur Fossil Specimens by Bone Type",
         xaxis: { title: "Count"},
-        yaxis: { title: "Bone type"}
+        yaxis: { 
+			title: "Bone type",
+			automargin: true
+		}
     };
+
+	var config = {responsive: true}
 
     // Create the plot
     Plotly.newPlot("plotly", data, layout); 
