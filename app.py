@@ -117,6 +117,29 @@ def QueryBones():
     # Return the jsonified result. 
     return jsonify(newdict)
    
+@app.route("/pychart")
+def QueryBonesPy():
+    ''' Query the dinosaur database and return the results as a JSON. '''
+    # Open a session, run the query, and then close the session again
+    session = Session(engine)
+    resultf = session.query(table.specimen_part, func.count(table.specimen_part)).group_by(table.specimen_part).all()
+    resultg = session.query(table).count()
+    session.close()
+    # Create a list of dictionaries, with each dictionary containing one row from the query. 
+    all_bonespy = []
+    for specimen_part, value in resultf:
+        dict = {}
+        dict["specimen_part"] = specimen_part
+        dict["value"] = value
+        all_bonespy.append(dict)
+    newchart = {subdict["specimen_part"]: subdict["value"] for subdict in all_bonespy}
+    newchart2 = {specimen_part:value/resultg for (specimen_part,value) in newchart.items()}
+    # Return the jsonified result. 
+    return jsonify(newchart2)
+
+
+
+
 
     
     

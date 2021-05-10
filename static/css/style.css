@@ -62,7 +62,7 @@ body {
   
   .features {
       background:#f1f1f1; /* Make it grayish*/
-      padding:0.5rem 1rem !important;
+      padding:0.5rem 0rem !important;
       max-width:100% !important;
     }
     
@@ -73,7 +73,30 @@ body {
     letter-spacing: -.05rem;
   }
   
+  #plotly, #pychart {
+    float:left;
+  }
+
+  .noscroll {
+    margin:0 !important;
+  }
+
+  #plotlycharts {
+    background: white;
+    height: 500px;
+  }
+
+  .reqs {
+    height:24px;
+  }
   
+  .d-none {
+    display:none !important;
+  }
+
+  .jcsb {
+    justify-content: space-between !important;
+  }
   /* RESPONSIVE CSS
   -------------------------------------------------- */
   
