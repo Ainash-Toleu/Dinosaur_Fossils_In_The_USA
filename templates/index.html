@@ -8,7 +8,7 @@
     <!-- <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico"> -->
     
 
-    <title>Carousel Template for Bootstrap</title>
+    <title>Dinosaur Fossils in the U.S.A</title>
 
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -27,28 +27,12 @@
   <body>
 
     <header>
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark jcsb">
         <a class="navbar-brand" href="#">DINOSAUR FOSSILS IN THE U.S.A</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Featured <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Map</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">Table</a>
-            </li>
-          </ul>
-          <form class="form-inline mt-2 mt-md-0">
-            <img class="trex" src="static/images/trex.svg">
-          </form>
-        </div>
-      </nav>
+        <form class="form-inline mt-2 mt-md-0">
+          <img class="trex" src="static/images/trex.svg">
+        </form>
+    </nav>
     </header>
 
     <main role="main">
@@ -114,50 +98,55 @@
             <img class="rounded-circle" src="static/images/sites.svg" alt="Generic placeholder image" width="140" height="140">
             <h2><span class="counter1">67</span></h2>
             <p>Number of sites in our database.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            <p><a class="btn btn-secondary" id="leaflettoggle" href="#leafletmap" data-toggle="tab" role="button" aria-expanded="true" class="nav-link active">View Leaflet Map &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
           <div class="col-lg-4">
             <img class="rounded-circle" src="static/images/species.svg" alt="Generic placeholder image" width="140" height="140">
             <h2><span class="counter2">86</span></h2>
             <p>Number of species identified.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            <p><a class="btn btn-secondary" id="dendogramtoggle" href="#dendogram" data-toggle="tab" role="button" aria-expanded="false" class="nav-link">View Highcharts Dendogram &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
           <div class="col-lg-4">
             <img class="rounded-circle" src="static/images/bones.svg" alt="Generic placeholder image" width="140" height="140">
             <h2><span class="counter3">14</span></h2>
             <p>Number of different bone fragments.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            <p><a class="btn btn-secondary" id="plotlychartstoggle" href="#plotlycharts" data-toggle="tab" role="button" aria-expanded="false" class="nav-link">View Plotly Charts &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
 
-
+        <div class="row">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque posuere magna a quam suscipit scelerisque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec semper sodales ante iaculis scelerisque. Nam ac libero vel nisi iaculis tincidunt a nec dolor. In nec porta lectus, ut rutrum purus. Suspendisse eu tortor magna. Etiam sed libero non elit consequat eleifend. Morbi at accumsan dolor. Aenean massa turpis, dignissim nec nisi at, ultricies ultricies nulla. Phasellus sapien elit, egestas id rhoncus quis, iaculis et tellus. Quisque quis sem augue. Integer rutrum tortor sapien, vitae pretium neque suscipit vel.</p>
+        </div>
 
       </div><!-- /.container -->
 
 	  <div class="container features">	
 
 
-		<div class="row">
+		<div class="row noscroll">
 			<div class="col-lg-12 col-md-12">
 				<div class="box">
-					<div class="container">
+					<div class="container features">
 						<div class="row" style="padding-bottom: 30px;">
 							<div class="card-body">
 								<ul class="nav nav-tabs">
 									<li class="nav-item">
-										<a href="#leafletmap" data-toggle="tab" aria-expanded="false" class="nav-link active">
-										   <i class="fal fa-leaf"></i><span class="d-none d-sm-inline-block ml-2">LEAFLET MAP</span>
+										<a id="tabb1" href="#leafletmap" data-toggle="tab" aria-expanded="false" class="nav-link active">
+                      <img class="reqs" src="../static/images/leaflet.png">
+                      <span class="d-none d-sm-inline-block">/ <i class="fal fa-map-marked-alt"></i> MAP</span>
 										</a>
 									</li>
 									<li class="nav-item">
-										<a href="#dendogram" data-toggle="tab" aria-expanded="true" class="nav-link">
-											<i class="fal fa-chart-network"></i> <span class="d-none d-sm-inline-block ml-2">HIGHCHARTS DENDOGRAM</span>
+										<a id="tabb2" href="#dendogram" data-toggle="tab" aria-expanded="true" class="nav-link">
+                      <img class="reqs" src="../static/images/highcharts.png">
+                      <span class="d-none d-sm-inline-block">/ <i class="fal fa-chart-network"></i> DENDOGRAM</span>
 										</a>
 									</li>
 									<li class="nav-item">
-										<a href="#plotly" data-toggle="tab" aria-expanded="true" class="nav-link">
-											<i class="fal fa-chart-bar"></i> <span class="d-none d-sm-inline-block ml-2">PLOTLY BAR CHART</span>
-										</a>
+										<a id="tabb3" href="#plotlycharts" data-toggle="tab" aria-expanded="true" class="nav-link">
+                      <img class="reqs" src="../static/images/plotly.png">
+                      <span class="d-none d-sm-inline-block">/ <i class="fal fa-chart-bar"></i> , <i class="fal fa-chart-pie"></i> BAR & PIE CHARTS</span>
+                    </a>
 									</li>
 								</ul>
 								<div class="tab-content">
@@ -166,13 +155,15 @@
                       <h3 class="title">LEAF MAP</h3>
                       <div id="mapid"></div>
                     </div>
-                              </div>
-									<div class="tab-pane show" id="dendogram">
-                    <figure class="highcharts-figure" style="width:100%">
+                  </div>
+									<div class="tab-pane" id="dendogram">
+                    <figure class="highcharts-figure">
                       <div id="container" style="width:100%"></div>
                   </figure>
-                                    </div>
-									<div class="tab-pane" id="plotly">
+                  </div>
+									<div class="tab-pane" id="plotlycharts">
+                    <div class="tab-pane col-md-6" id="plotly"></div>
+                    <div class="tab-pane col-md-5" id="pychart"></div>
 
                   </div>
 								</div>
@@ -194,7 +185,7 @@
       <!-- FOOTER -->
       <footer class="container">
         <p class="float-right"><a href="#">Back to top</a></p>
-        <p>&copy; A project by Ainash Toleu, Michael Frieaesn and Fukhrudin Maalim in partial fulfilment of requirements for Data Analytics & Visualization Bootcamp. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+        <p>&copy; A project by Ainash Toleu, Michael Frieaesn and Fukhrudin Maalim in partial fulfilment of requirements for <a href="https://bootcamp.umn.edu/data/landing/" target="_blank"> UMN's Data Analytics & Visualization Bootcamp</a></p>
       </footer>
     </main>
 
@@ -217,6 +208,30 @@
                 time: 1000
             });
         });
+
+        $("#leaflettoggle").click(function(){
+                $("#tabb1").addClass("active");
+                $("#tabb2,#tabb3").removeClass("active");
+                $("#leafletmap").addClass("active").siblings().removeClass("active");
+            }); 
+        $("#dendogramtoggle").click(function(){
+                $("#tabb2").addClass("active");
+                $("#tabb1,#tabb3").removeClass("active");
+                $("#dendogram").addClass("active").siblings().removeClass("active");
+            }); 
+        $("#plotlychartstoggle").click(function(){
+                $("#tabb3").addClass("active");
+                $("#tabb1,#tabb2").removeClass("active");
+                $("#plotlycharts").addClass("active").siblings().removeClass("active");
+            }); 
+
+    
+            $(document).ready(function() {
+                $('#plotlychartstoggle').click(function() {
+                  $(document).scrollTo('.noscroll');
+        }
+});
+
     </script>
 	<script src="http://ciromattia.github.io/jquery.counterup/jquery.counterup.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.0/jquery.waypoints.min.js"></script>
