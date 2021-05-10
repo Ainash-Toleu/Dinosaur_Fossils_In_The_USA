@@ -227,5 +227,5 @@ d3.json("/leafmap").then(function (data){
 	data.forEach(function(entry){
 		var marker = L.marker([entry.lat, entry.lng]).addTo(mymap);
 	})	
-})
+});
 
