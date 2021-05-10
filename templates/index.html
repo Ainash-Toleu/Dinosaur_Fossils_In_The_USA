@@ -115,9 +115,10 @@
         </div><!-- /.row -->
 
         <div class="row">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque posuere magna a quam suscipit scelerisque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec semper sodales ante iaculis scelerisque. Nam ac libero vel nisi iaculis tincidunt a nec dolor. In nec porta lectus, ut rutrum purus. Suspendisse eu tortor magna. Etiam sed libero non elit consequat eleifend. Morbi at accumsan dolor. Aenean massa turpis, dignissim nec nisi at, ultricies ultricies nulla. Phasellus sapien elit, egestas id rhoncus quis, iaculis et tellus. Quisque quis sem augue. Integer rutrum tortor sapien, vitae pretium neque suscipit vel.</p>
-        </div>
-
+          <p id="cooltable">Click the button to create a table using Dinosaur fossils database.</p>
+          <input type='button' onclick='tableFromJson()' value='Create Table from JSON data' />
+          <p id='showData'></p>
+      </div>
       </div><!-- /.container -->
     <div id="greydiv"></div>
 	  <div class="container features">	
@@ -152,7 +153,7 @@
 								<div class="tab-content">
 									<div class="tab-pane" id="leafletmap">
                     <div class="box" id="leafletdiv">
-                      <h3 class="title">Leaflet Map</h3>
+
                       <div id="mapid"></div>
                     </div>
                   </div>
@@ -225,11 +226,6 @@
                 $("#plotlycharts").addClass("active").siblings().removeClass("active");
             }); 
 
-        $(document).ready(function() {
-          $('#showData').DataTable();
-        } );
-
-  </script>
 
 	<script src="http://ciromattia.github.io/jquery.counterup/jquery.counterup.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.0/jquery.waypoints.min.js"></script>
