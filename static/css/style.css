@@ -112,9 +112,10 @@ body {
     justify-content: space-between !important;
   }
 
+  #greydiv {
+    height:70px !important;
+  }
 
-  
-  
   /* RESPONSIVE CSS
   -------------------------------------------------- */
   

@@ -235,5 +235,5 @@ d3.json("/leafmap").then(function (data){
 		popuptext = popuptext + "<p>Family: "+entry.specimen_family+"</p><p>State: "+entry.specimen_state+"</p>";
 		marker.bindPopup(popuptext);
 	})	
-})
+});
 
