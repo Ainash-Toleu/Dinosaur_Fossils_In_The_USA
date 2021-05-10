@@ -98,19 +98,19 @@
             <img class="rounded-circle" src="static/images/sites.svg" alt="Generic placeholder image" width="140" height="140">
             <h2><span class="counter1">67</span></h2>
             <p>Number of sites in our database.</p>
-            <p><a class="btn btn-secondary" id="leaflettoggle" href="#leafletmap" data-toggle="tab" role="button" aria-expanded="true" class="nav-link active">View Leaflet Map &raquo;</a></p>
+            <p><a class="btn btn-secondary" id="leaflettoggle" href="#greydiv">View Leaflet Map &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
           <div class="col-lg-4">
             <img class="rounded-circle" src="static/images/species.svg" alt="Generic placeholder image" width="140" height="140">
             <h2><span class="counter2">86</span></h2>
             <p>Number of species identified.</p>
-            <p><a class="btn btn-secondary" id="dendogramtoggle" href="#dendogram" data-toggle="tab" role="button" aria-expanded="false" class="nav-link">View Highcharts Dendogram &raquo;</a></p>
+            <p><a class="btn btn-secondary" id="dendogramtoggle" href="#greydiv">View Highcharts Dendogram &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
           <div class="col-lg-4">
             <img class="rounded-circle" src="static/images/bones.svg" alt="Generic placeholder image" width="140" height="140">
             <h2><span class="counter3">14</span></h2>
             <p>Number of different bone fragments.</p>
-            <p><a class="btn btn-secondary" id="plotlychartstoggle" href="#plotlycharts" data-toggle="tab" role="button" aria-expanded="false" class="nav-link">View Plotly Charts &raquo;</a></p>
+            <p><a class="btn btn-secondary" id="plotlychartstoggle" href="#greydiv">View Plotly Charts &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
 
@@ -119,7 +119,7 @@
         </div>
 
       </div><!-- /.container -->
-
+    <div id="greydiv"></div>
 	  <div class="container features">	
 
 
@@ -152,7 +152,6 @@
 								<div class="tab-content">
 									<div class="tab-pane" id="leafletmap">
                     <div class="box" id="leafletdiv">
-                      <h3 class="title">LEAF MAP</h3>
                       <div id="mapid"></div>
                     </div>
                   </div>
@@ -225,14 +224,11 @@
                 $("#plotlycharts").addClass("active").siblings().removeClass("active");
             }); 
 
-    
-            $(document).ready(function() {
-                $('#plotlychartstoggle').click(function() {
-                  $(document).scrollTo('.noscroll');
-        }
-});
+        $(document).ready(function() {
+          $('#showData').DataTable();
+        } );
 
-    </script>
+  </script>
 	<script src="http://ciromattia.github.io/jquery.counterup/jquery.counterup.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.0/jquery.waypoints.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -243,6 +239,9 @@
   <script src="https://code.highcharts.com/highcharts.js"></script>
   <script src="https://code.highcharts.com/modules/networkgraph.js"></script>
   <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
   <script type="text/javascript" src="static/js/main.js"></script>  
   
 </body>
