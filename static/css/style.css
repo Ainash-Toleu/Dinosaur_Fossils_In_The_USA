@@ -89,10 +89,18 @@ body {
   .reqs {
     height:24px;
   }
+    
+  #leafletdiv {
+	position: relative;
+	min-height: 600px;
+}
 
   #mapid {
-		height: 400px;
-		width: 600px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 	}
   
   
@@ -117,6 +125,7 @@ body {
 th {
     font-weight:bold;
 }
+
   /* RESPONSIVE CSS
   -------------------------------------------------- */
   
