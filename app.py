@@ -149,18 +149,27 @@ def SelectForMap():
 
     # Open a session, run the query, and then close the session again
     session = Session(engine)
-    results = session.query(table.specimen_no, table.specimen_id, table.specimen_name, table.lng, table.lat).all()
+    results = session.query(table.specimen_no, table.specimen_id, table.specimen_name, table.lng, table.lat, table.state, table.specimen_part,table.specimen_class, table.specimen_phylum, table.specimen_family, table.specimen_genus).all()
     session.close()
 
     # Create a list of dictionaries, with each dictionary containing one row from the query. 
     all_bones = []
-    for specimen_no, specimen_id, specimen_name, lng, lat, in results:
+	
+	#Get the following data: Specimen number, ID, phylum, class, family, genus, state, part,
+    for specimen_no, specimen_id, specimen_name, lng, lat, state, specimen_part, specimen_class, specimen_phylum, specimen_family, specimen_genus in results:
         dict = {}
         dict["specimen_no"] = specimen_no
         dict["specimen_id"] = specimen_id
         dict["specimen_name"] = specimen_name
         dict["lng"] = lng
         dict["lat"] = lat
+        #dict["species_name"] = species_name
+        dict["specimen_part"] = specimen_part
+        dict["specimen_phylum"] = specimen_phylum
+        dict["specimen_class"] = specimen_class
+        dict["specimen_family"] = specimen_family
+        dict["specimen_genus"] = specimen_genus
+        dict["state"] = state
 		
         all_bones.append(dict)
 		
