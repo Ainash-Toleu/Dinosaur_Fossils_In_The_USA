@@ -227,5 +227,40 @@ d3.json("/leafmap").then(function (data){
 	data.forEach(function(entry){
 		var marker = L.marker([entry.lat, entry.lng]).addTo(mymap);
 	})	
-})
+});
 
+// Query the endpoint that returns a JSON ...
+d3.json("/dino_db").then(function tableFromJson(data) {
+    // ... and dump that JSON to the console for inspection
+    console.log(data); 
+    // Extract value from table header. 
+    var col = [];
+    for (var i = 0; i < data.length; i++) {
+        for (var key in data[i]) {
+            if (col.indexOf(key) === -1) {
+                col.push(key);
+            }
+        }
+    }
+    // Create a table.
+    var table = document.createElement("table");
+    // Create table header row using the extracted headers above.
+    var tr = table.insertRow(-1);                   // table row.
+    for (var i = 0; i < col.length; i++) {
+        var th = document.createElement("th");      // table header.
+        th.innerHTML = col[i];
+        tr.appendChild(th);
+    }
+    // add json data to the table as rows.
+    for (var i = 0; i < data.length; i++) {
+        tr = table.insertRow(-1);
+        for (var j = 0; j < col.length; j++) {
+            var tabCell = tr.insertCell(-1);
+            tabCell.innerHTML = data[i][col[j]];
+        }
+    }
+    // Now, add the newly created table with json data, to a container.
+    var divShowData = document.getElementById('showData');
+    divShowData.innerHTML = "";
+    divShowData.appendChild(table);
+});
