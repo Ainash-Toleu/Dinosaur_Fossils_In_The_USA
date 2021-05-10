@@ -210,3 +210,22 @@ d3.json("/pychart").then(function (data) {
     Plotly.newPlot("pychart", data, layout, config); 
 });
 
+//Leaflet Map
+var centerUSA = [39.50, -98.35, "Center of the United States"]
+var mymap = L.map('mapid').setView(centerUSA, 3);
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1IjoibWZyaWVzZW5tbiIsImEiOiJja29nMGUxaXUwbHNkMm9qeG1xd3FxZmN3In0.4ONYEDC3k_RbS32CeGUeSA'
+}).addTo(mymap);
+var marker = L.marker(centerUSA).addTo(mymap)
+
+d3.json("/leafmap").then(function (data){
+	data.forEach(function(entry){
+		var marker = L.marker([entry.lat, entry.lng]).addTo(mymap);
+	})	
+})
+

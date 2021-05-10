@@ -89,6 +89,12 @@ body {
   .reqs {
     height:24px;
   }
+
+  #mapid {
+		height: 400px;
+		width: 600px;
+	}
+  
   
   .d-none {
     display:none !important;
