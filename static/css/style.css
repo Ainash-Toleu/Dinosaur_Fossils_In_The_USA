@@ -121,6 +121,42 @@ body {
   .modal-dialog {max-height:100% !important;; margin:0 !important; max-width:100% !important; }
   .modal-dialog-scrollable, .modal-content {max-height:100% !important; border-radius:0 !important}
 
+  #mapdiv {
+    padding-left:0 !important;
+  }
+  
+  #descdiv {
+    height:400px !important;
+    overflow-y:auto;
+  }
+
+  /* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+#ghl {
+  color:white !important;
+  height:100%;
+  display:block;
+  width:100%;
+}
+
   /* RESPONSIVE CSS
   -------------------------------------------------- */
   
