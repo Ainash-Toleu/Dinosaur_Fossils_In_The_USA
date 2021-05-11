@@ -234,7 +234,7 @@ d3.json("/leafmap").then(function (data){
 				deschtmlstring = deschtmlstring + "<h5>"+bone.specimen_no+"</h5><ul><li>Name: "+bone.specimen_name+"</li>";
 				deschtmlstring = deschtmlstring + "<li> ID: "+bone.specimen_id+"</li><li>Phylum: "+bone.specimen_phylum+"</li>";
 				deschtmlstring = deschtmlstring + "<li> Class: "+bone.specimen_class+"</li><li> Family: "+bone.specimen_family+"</li>";
-				deschtmlstring = deschtmlstring + "<li> Part: "+bone.part+"</li></ul>";
+				deschtmlstring = deschtmlstring + "<li> Part: "+bone.specimen_part+"</li></ul>";
 			})
 			document.getElementById("mapdescription").innerHTML = deschtmlstring;
 		})
