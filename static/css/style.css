@@ -106,17 +106,13 @@ body {
 
   #greydiv {
     height:70px !important;
+    text-align:center;
   }
 
-  table, th, td {
-    border: solid 1px #ddd;
-    border-collapse: collapse;
-    padding: 2px 3px;
-    text-align: center;
-}
-th {
-    font-weight:bold;
-}
+  .modal {padding-right:0 !important;}
+  .modal-dialog {max-height:100% !important;; margin:0 !important; max-width:100% !important; }
+  .modal-dialog-scrollable, .modal-content {max-height:100% !important; border-radius:0 !important}
+
   /* RESPONSIVE CSS
   -------------------------------------------------- */
   
