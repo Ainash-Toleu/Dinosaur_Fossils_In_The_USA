@@ -1,5 +1,10 @@
 # Dinosaur Fossils found in the USA
-This is a shared GitHub repo between group 12 members Ainash Toleu, Fukhrudin Maalim, Michael Friesen for Project 2 in University of Minnesota Data Visualization and Analytics Boot Camp
+This is a shared GitHub repo between group 12 members Ainash Toleu, Fukhrudin Maalim, Michael Friesen for Project 2 in University of Minnesota Data Visualization and Analytics Boot Camp.
+
+## Project overview
+1. In this Project, our group worked with 374 kb CSV file downloaded from https://paleobiodb.org/ This file contained information about dinosaur fossils found in the United States and their exact location shown in longitude and latitude.
+1. Using PostgreSQL we created database. Plese, check information down below to recreate that database on your computer ("How to recreate database on your computer" instruction).
+1.  Our website contains map with location of all dinosaur fossils found in the United States and some additional information, such as name of the dinosaur, it's class, family and etc. Also, we plotted charts using bone types, created dendogram with js library that was not covered in our class and converted jsonified dinosaur fossils data to html table on our website. To get data for mapping and graphing we used API endpoints. To have access to our website, you have to recreate a database on your computer first (see par.2 above) and follow all the steps in the instruction.
 
 ## How to recreate database on your computer
 
