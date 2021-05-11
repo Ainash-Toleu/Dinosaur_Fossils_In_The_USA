@@ -227,19 +227,17 @@ d3.json("/leafmap").then(function (data){
 		var marker = L.marker([site.lat, site.lng]).addTo(mymap);
 		var popuptext = "<h4>"+site.lat+", "+ site.lng+"</h4><h5>"+ site.count + " bones found</h5>"
 		marker.bindPopup(popuptext);
-		var deschtmlstring = popuptext;
-		//Get the following data: Specimen number, ID, phylum, class, family, genus, state, part,
-		site.specimens.forEach(function(bone){
-			deschtmlstring = deschtmlstring + "<h5>"+bone.specimen_no+"</h5><ul><li>Name: "+bone.specimen_name+"</li>";
-			deschtmlstring = deschtmlstring + "<li> ID: "+bone.specimen_id+"</li><li>Phylum: "+bone.specimen_phylum+"</li>";
-			deschtmlstring = deschtmlstring + "<li> Class: "+bone.specimen_class+"</li><li> Family: "+bone.specimen_family+"</li>";
-			deschtmlstring = deschtmlstring + "<li> Part: "+bone.part+"</li></ul>";
-		})
 		marker.on('click',function(e){
+			console.log(e);
+			var deschtmlstring = "<h4>"+site.lat+", "+ site.lng+"</h4><h5>"+ site.count + " bones found</h5>";
+			site.specimens.forEach(function(bone){
+				deschtmlstring = deschtmlstring + "<h5>"+bone.specimen_no+"</h5><ul><li>Name: "+bone.specimen_name+"</li>";
+				deschtmlstring = deschtmlstring + "<li> ID: "+bone.specimen_id+"</li><li>Phylum: "+bone.specimen_phylum+"</li>";
+				deschtmlstring = deschtmlstring + "<li> Class: "+bone.specimen_class+"</li><li> Family: "+bone.specimen_family+"</li>";
+				deschtmlstring = deschtmlstring + "<li> Part: "+bone.part+"</li></ul>";
+			})
 			document.getElementById("mapdescription").innerHTML = deschtmlstring;
-			//console.log("Onclick been called: "+site.lng+", "+site.lat)
 		})
-
 	}	
 });
 
