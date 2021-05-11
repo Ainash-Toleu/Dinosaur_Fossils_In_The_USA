@@ -212,7 +212,7 @@ d3.json("/pychart").then(function (data) {
 
 //Leaflet Map
 var centerUSA = [39.50, -98.35, "Center of the United States"]
-var mymap = L.map('mapid').setView(centerUSA, 3);
+var mymap = L.map('mapid').setView(centerUSA, 5);
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
@@ -221,19 +221,28 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     zoomOffset: -1,
     accessToken: 'pk.eyJ1IjoibWZyaWVzZW5tbiIsImEiOiJja29nMGUxaXUwbHNkMm9qeG1xd3FxZmN3In0.4ONYEDC3k_RbS32CeGUeSA'
 }).addTo(mymap);
-var centermarker = L.marker(centerUSA).addTo(mymap);
-centermarker.bindPopup("The geographic center of the continental USA");
-
 
 d3.json("/leafmap").then(function (data){
-	data.forEach(function(entry){
-		var marker = L.marker([entry.lat, entry.lng]).addTo(mymap);
-		//Get the following data: Specimen number, ID, phylum, class, family, genus, state, part:
-		var popuptext = "<h4>"+entry.specimen_id+": "+entry.specimen_name+"</h4>";
-		popuptext = popuptext + "<p>Specimen number: "+entry.specimen_no+"</p><p>Part: "+entry.specimen_part+"</p>";
-		popuptext = popuptext + "<p>Phylum: "+entry.specimen_phylum+"</p><p>Class: "+entry.specimen_class+"</p>";
-		popuptext = popuptext + "<p>Family: "+entry.specimen_family+"</p><p>State: "+entry.specimen_state+"</p>";
+	for (const [coords, site] of Object.entries(data)){
+		var marker = L.marker([site.lat, site.lng]).addTo(mymap);
+		var popuptext = "<h4>"+site.lat+", "+ site.lng+"</h4><h5>"+ site.count + " bones found</h5>"
 		marker.bindPopup(popuptext);
+		var deschtmlstring = popuptext;
+		//Get the following data: Specimen number, ID, phylum, class, family, genus, state, part,
+		site.specimens.forEach(function(bone){
+			deschtmlstring = deschtmlstring + "<h5>"+bone.specimen_no+"</h5><ul><li>Name: "+bone.specimen_name+"</li>";
+			deschtmlstring = deschtmlstring + "<li> ID: "+bone.specimen_id+"</li><li>Phylum: "+bone.specimen_phylum+"</li>";
+			deschtmlstring = deschtmlstring + "<li> Class: "+bone.specimen_class+"</li><li> Family: "+bone.specimen_family+"</li>";
+			deschtmlstring = deschtmlstring + "<li> Part: "+bone.part+"</li></ul>";
+		})
+		marker.on('click',function(e){
+			document.getElementById("mapdescription").innerHTML = deschtmlstring;
+			//console.log("Onclick been called: "+site.lng+", "+site.lat)
+		})
+
+	}
+})
+=======
 	})	
 });
 

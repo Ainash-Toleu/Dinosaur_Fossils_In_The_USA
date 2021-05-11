@@ -49,7 +49,7 @@ def QueryDinosaurDatabase():
     # Create a list of dictionaries, with each dictionary containing one row from the query. 
     all_dinosaurs = []
     
-    for specimen_no, specimen_id, specimen_part, specimen_name, specimen_phylum, specimen_class, specimen_family, specimen_genus, lng, lat, country, state in results:
+    for specimen_no, specimen_id, specimen_part, specimen_name, specimen_phylum, specimen_class, specimen_family, specimen_genus, lng, lat, state in results:
         dict = {}
         dict["specimen_no"] = specimen_no
         dict["specimen_id"] = specimen_id
@@ -61,7 +61,6 @@ def QueryDinosaurDatabase():
         dict["specimen_genus"] = specimen_genus
         dict["lng"] = lng
         dict["lat"] = lat
-        dict["country"] = country
         dict["state"] = state
 
         all_dinosaurs.append(dict)
@@ -152,18 +151,15 @@ def SelectForMap():
     results = session.query(table.specimen_no, table.specimen_id, table.specimen_name, table.lng, table.lat, table.state, table.specimen_part,table.specimen_class, table.specimen_phylum, table.specimen_family, table.specimen_genus).all()
     session.close()
 
-    # Create a list of dictionaries, with each dictionary containing one row from the query. 
-    all_bones = []
+    sites = {}
 	
 	#Get the following data: Specimen number, ID, phylum, class, family, genus, state, part,
     for specimen_no, specimen_id, specimen_name, lng, lat, state, specimen_part, specimen_class, specimen_phylum, specimen_family, specimen_genus in results:
+
         dict = {}
         dict["specimen_no"] = specimen_no
         dict["specimen_id"] = specimen_id
         dict["specimen_name"] = specimen_name
-        dict["lng"] = lng
-        dict["lat"] = lat
-        #dict["species_name"] = species_name
         dict["specimen_part"] = specimen_part
         dict["specimen_phylum"] = specimen_phylum
         dict["specimen_class"] = specimen_class
@@ -171,9 +167,25 @@ def SelectForMap():
         dict["specimen_genus"] = specimen_genus
         dict["state"] = state
 		
-        all_bones.append(dict)
+        coords = [lat, lng]
+        coordsS = f"{coords}"
 		
-    return jsonify(all_bones);
+        if f"{coords}" in sites.keys():
+            siteDict = sites[coordsS]
+            specimens = siteDict["specimens"]
+            specimens.append(dict)
+            siteDict["count"] = len(specimens)
+        else:
+            siteDict = {}
+            specimensArray = []
+            siteDict["specimens"] = specimensArray
+            specimensArray.append(dict)
+            siteDict["lng"] = lng
+            siteDict["lat"] = lat
+            sites[coordsS] = siteDict
+            siteDict["count"] = 1
+		
+    return jsonify(sites);
 
 if __name__ == '__main__':
     app.run(debug=True)
