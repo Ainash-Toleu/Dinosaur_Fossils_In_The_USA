@@ -251,24 +251,34 @@ d3.json("/dino_db").then(function tableFromJson(data) {
         }
     }
     // Create a table.
-    var table = document.createElement("table");
-    // Create table header row using the extracted headers above.
-    var tr = table.insertRow(-1);                   // table row.
-    for (var i = 0; i < col.length; i++) {
-        var th = document.createElement("th");      // table header.
-        th.innerHTML = col[i];
-        tr.appendChild(th);
-    }
-    // add json data to the table as rows.
-    for (var i = 0; i < data.length; i++) {
-        tr = table.insertRow(-1);
-        for (var j = 0; j < col.length; j++) {
-            var tabCell = tr.insertCell(-1);
-            tabCell.innerHTML = data[i][col[j]];
+
+    $("#showTable").click(function(){
+        
+        var table = document.createElement("table");
+        table.setAttribute('id', 'cooltable');
+        table.setAttribute('class', 'table table-striped table-bordered');
+        $('#cooltable').DataTable();
+        // Create table header row using the extracted headers above.
+        var tr = table.insertRow(-1);                   // table row.
+        for (var i = 0; i < col.length; i++) {
+            var th = document.createElement("th");      // table header.
+            th.innerHTML = col[i];
+            tr.appendChild(th);
         }
-    }
-    // Now, add the newly created table with json data, to a container.
-    var divShowData = document.getElementById('showData');
-    divShowData.innerHTML = "";
-    divShowData.appendChild(table);
+        // add json data to the table as rows.
+        for (var i = 0; i < data.length; i++) {
+            tr = table.insertRow(-1);
+            for (var j = 0; j < col.length; j++) {
+                var tabCell = tr.insertCell(-1);
+                tabCell.innerHTML = data[i][col[j]];
+            }
+        }
+        // Now, add the newly created table with json data, to a container.
+        var divShowData = document.getElementById('showData');
+        divShowData.innerHTML = "";
+        divShowData.appendChild(table);
+
+
+}); 
+
 });
