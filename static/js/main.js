@@ -240,10 +240,7 @@ d3.json("/leafmap").then(function (data){
 			//console.log("Onclick been called: "+site.lng+", "+site.lat)
 		})
 
-	}
-})
-=======
-	})	
+	}	
 });
 
 // Query the endpoint that returns a JSON ...
