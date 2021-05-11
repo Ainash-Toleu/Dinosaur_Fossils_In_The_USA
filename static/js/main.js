@@ -20,9 +20,9 @@ d3.json("/dendogram").then(function (data) {
 // Add the nodes option through an event call. We want to start with the parent
 // item and apply separate colors to each child element, then the same color to
 // grandchildren.
-function setHighCharts(responseData){
+function setHighCharts(data){
     console.log("=============================");
-    console.log(responseData);
+    console.log(data);
     console.log("=============================");
 
     Highcharts.addEvent(
@@ -91,7 +91,7 @@ function setHighCharts(responseData){
                 linkFormat: ''
             },
             id: 'lang-tree',
-            data: responseData
+            data: data
         }]
     });
 
