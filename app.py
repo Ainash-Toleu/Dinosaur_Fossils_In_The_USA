@@ -43,7 +43,7 @@ def QueryDinosaurDatabase():
 
     # Open a session, run the query, and then close the session again
     session = Session(engine)
-    results = session.query(table.specimen_no, table.specimen_id, table.specimen_part, table.specimen_name, table.specimen_class, table.specimen_family, table.specimen_genus, table.lng, table.lat, table.country, table.state).all()
+    results = session.query(table.specimen_no, table.specimen_id, table.specimen_part, table.specimen_name, table.specimen_phylum, table.specimen_class, table.specimen_family, table.specimen_genus, table.lng, table.lat, table.country, table.state).all()
     session.close()
 
     # Create a list of dictionaries, with each dictionary containing one row from the query. 

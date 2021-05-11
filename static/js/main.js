@@ -242,4 +242,7 @@ d3.json("/leafmap").then(function (data){
 
 	}
 })
+=======
+	})	
+});
 
