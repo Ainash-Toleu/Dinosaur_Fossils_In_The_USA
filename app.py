@@ -80,7 +80,7 @@ def QueryDendogramLO():
     resultd = session.query(table.specimen_genus, table.specimen_name).distinct()
     session.close()
 
-    # Create a list of dictionaries, with each dictionary containing one row from the query. 
+    # Create an array of unique key START and END nodes for the dendogram.
     levelf = []
     for specimen_phylum, specimen_class in resulta:
         list = [specimen_phylum, specimen_class]
@@ -132,9 +132,11 @@ def QueryBonesPy():
         dict["specimen_part"] = specimen_part
         dict["value"] = value
         all_bonespy.append(dict)
+    # Do a dict comprehension to generate just one dictionary. 
     newchart = {subdict["specimen_part"]: subdict["value"] for subdict in all_bonespy}
+    # Change the bone count (value) to a percentage by dividing by the total number of bones.
     newchart2 = {specimen_part:value/resultg for (specimen_part,value) in newchart.items()}
-    # Return the jsonified result. 
+    # Return the jsonified result
     return jsonify(newchart2)
 
 

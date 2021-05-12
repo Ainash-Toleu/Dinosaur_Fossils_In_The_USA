@@ -12,11 +12,11 @@ d3.json("/dino_db").then(function (data) {
 d3.json("/dendogram").then(function (data) {
 
     // ... and dump that JSON to the console for inspection
-//    console.log(data); 
     setHighCharts(data);
 
 });
 
+// "Chocolate-cake" recipe courtesy of highcharts.com [https://www.highcharts.com/demo/network-graph]
 // Add the nodes option through an event call. We want to start with the parent
 // item and apply separate colors to each child element, then the same color to
 // grandchildren.
@@ -35,7 +35,7 @@ function setHighCharts(data){
 
             if (
                 this instanceof Highcharts.seriesTypes.networkgraph &&
-                e.options.id === 'lang-tree'
+                e.options.id === 'pg-tree'
             ) {
                 e.options.data.forEach(function (link) {
 
@@ -90,7 +90,7 @@ function setHighCharts(data){
                 enabled: true,
                 linkFormat: ''
             },
-            id: 'lang-tree',
+            id: 'pg-tree',
             data: data
         }]
     });
