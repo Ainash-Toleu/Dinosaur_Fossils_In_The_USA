@@ -13,7 +13,7 @@ Please clone this repository to your machine and then do the following:
 1.  In open GitBash(Windows) or Terminal(Mac) type `source activate PythonData` and hit ENTER. Do not close GitBash(Windows) or Terminal(Mac).
 1. In still open GitBash(Windows) or Terminal(Mac) type `jupyter notebook` and hit ENTER. Do not close GitBash(Windows) or Terminal(Mac).
 1. In launched Jupyter Notebook, open **Dinosaur_fossils.ipynb** document and do the following:
-    * Run first 22 cells to read csv file, store it in dataframe and clean the data. 
+    * Run first 23 cells to read csv file, store it in dataframe and clean the data. 
     * Do not close Jupyter notebook and GitBash(Windows) or Terminal(Mac).
 1. Launch PgAdmin and do the following:
     * Create database **dino_db**.
