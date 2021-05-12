@@ -31,8 +31,7 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 # Here's where we define the various application routes ...
 @app.route("/")
 def IndexRoute():
-    ''' This function runs when the browser loads the index route. 
-        Note that the html file must be located in a folder called templates. '''
+    ''' This function runs when the browser loads the index route.  '''
 
     webpage = render_template("index.html")
     return webpage
@@ -102,10 +101,12 @@ def QueryDendogramLO():
 @app.route("/plotly")
 def QueryBones():
     ''' Query the dinosaur database and return the results as a JSON. '''
+
     # Open a session, run the query, and then close the session again
     session = Session(engine)
     resulte = session.query(table.specimen_part, func.count(table.specimen_part)).group_by(table.specimen_part).all()
     session.close()
+
     # Create a list of dictionaries, with each dictionary containing one row from the query. 
     all_bones = []
     for specimen_part, value in resulte:
@@ -114,17 +115,20 @@ def QueryBones():
         dict["value"] = value
         all_bones.append(dict)
     newdict = {subdict["specimen_part"]: subdict["value"] for subdict in all_bones}
+
     # Return the jsonified result. 
     return jsonify(newdict)
    
 @app.route("/pychart")
 def QueryBonesPy():
     ''' Query the dinosaur database and return the results as a JSON. '''
+
     # Open a session, run the query, and then close the session again
     session = Session(engine)
     resultf = session.query(table.specimen_part, func.count(table.specimen_part)).group_by(table.specimen_part).all()
     resultg = session.query(table).count()
     session.close()
+
     # Create a list of dictionaries, with each dictionary containing one row from the query. 
     all_bonespy = []
     for specimen_part, value in resultf:
@@ -132,19 +136,16 @@ def QueryBonesPy():
         dict["specimen_part"] = specimen_part
         dict["value"] = value
         all_bonespy.append(dict)
+
     # Do a dict comprehension to generate just one dictionary. 
     newchart = {subdict["specimen_part"]: subdict["value"] for subdict in all_bonespy}
+
     # Change the bone count (value) to a percentage by dividing by the total number of bones.
     newchart2 = {specimen_part:value/resultg for (specimen_part,value) in newchart.items()}
+
     # Return the jsonified result
     return jsonify(newchart2)
-
-
-
-
-
-    
-    
+  
 @app.route("/leafmap")
 def SelectForMap():
 
@@ -187,7 +188,7 @@ def SelectForMap():
             sites[coordsS] = siteDict
             siteDict["count"] = 1
 		
-    return jsonify(sites);
+    return jsonify(sites)
 
 if __name__ == '__main__':
     app.run(debug=True)

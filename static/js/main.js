@@ -2,13 +2,6 @@
 console.log("Loaded main.js");
 
 // Query the endpoint that returns a JSON ...
-d3.json("/dino_db").then(function (data) {
-    // ... and dump that JSON to the console for inspection
-    console.log(data); 
-
-});
-
-// Query the endpoint that returns a JSON ...
 d3.json("/dendogram").then(function (data) {
 
     // ... and dump that JSON to the console for inspection
@@ -138,9 +131,7 @@ d3.json("/plotly").then(function (data) {
 			automargin: true
 		},
         autosize: false,
-        width:600,
-    //    paper_bgcolor: 'rgba(0,0,0,0)',
-    //    plot_bgcolor: 'rgba(0,0,0,0)'      
+        width:600,     
         
     };
 
@@ -200,8 +191,6 @@ d3.json("/pychart").then(function (data) {
 		},
         autosize: false,
         width: 600,
-    //    paper_bgcolor: 'rgba(0,0,0,0)',
-    //   plot_bgcolor: 'rgba(0,0,0,0)'
     };
 
 	var config = {responsive: true}
@@ -243,8 +232,10 @@ d3.json("/leafmap").then(function (data){
 
 // Query the endpoint that returns a JSON ...
 d3.json("/dino_db").then(function tableFromJson(data) {
+    
     // ... and dump that JSON to the console for inspection
     console.log(data); 
+    
     // Extract value from table header. 
     var col = [];
     for (var i = 0; i < data.length; i++) {
@@ -254,14 +245,15 @@ d3.json("/dino_db").then(function tableFromJson(data) {
             }
         }
     }
-    // Create a table.
 
+    // Create a table.
     $("#showTable").click(function(){
         
         var table = document.createElement("table");
         table.setAttribute('id', 'cooltable');
         table.setAttribute('class', 'table table-striped table-bordered');
         $('#cooltable').DataTable();
+
         // Create table header row using the extracted headers above.
         var tr = table.insertRow(-1);                   // table row.
         for (var i = 0; i < col.length; i++) {
@@ -269,6 +261,7 @@ d3.json("/dino_db").then(function tableFromJson(data) {
             th.innerHTML = col[i];
             tr.appendChild(th);
         }
+
         // add json data to the table as rows.
         for (var i = 0; i < data.length; i++) {
             tr = table.insertRow(-1);
@@ -277,12 +270,11 @@ d3.json("/dino_db").then(function tableFromJson(data) {
                 tabCell.innerHTML = data[i][col[j]];
             }
         }
+        
         // Now, add the newly created table with json data, to a container.
         var divShowData = document.getElementById('showData');
         divShowData.innerHTML = "";
         divShowData.appendChild(table);
-
-
-}); 
+    }); 
 
 });
